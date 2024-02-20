@@ -122,7 +122,7 @@ def login(mobile: str, v_code: str):
 
 # 获取当日的session id
 def get_current_session_id():
-    # print("===============get_current_session_id")
+    print("===============get_current_session_id")
     day_time = int(time.mktime(datetime.date.today().timetuple())) * 1000
     my_url = f"https://static.moutai519.com.cn/mt-backend/xhr/front/mall/index/session/get/{day_time}"
     print(my_url)
