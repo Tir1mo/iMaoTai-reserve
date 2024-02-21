@@ -46,6 +46,9 @@ for section in configs.sections():
     lat = configs.get(section, 'lat')
     lng = configs.get(section, 'lng')
 
+    if TODAY == configs.get(section, 'successtime'):
+        continue
+
     p_c_map, source_data = process.get_map(lat=lat, lng=lng)
 
     process.UserId = userId
@@ -74,6 +77,10 @@ for section in configs.sections():
             # 为了防止漏掉推送异常，所有只要有一个异常，标题就显示失败
             if not r_success:
                 s_title = '！！失败！！茅台预约'
+            else :
+                configs.set(section,'successtime',TODAY)
+                with open(login.get_credentials_path(), 'w+', encoding="utf-8") as file:
+                    configs.write(file)  # 将configs数据写入文件
             s_content = s_content + r_content + shopInfo + "\n"
             # 领取小茅运和耐力值
             process.getUserEnergyAward(mobile)

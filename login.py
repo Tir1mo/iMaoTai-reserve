@@ -82,6 +82,7 @@ if __name__ == '__main__':
 
         config.set(encrypt_mobile, 'lat', location.split(',')[1])
         config.set(encrypt_mobile, 'lng', location.split(',')[0])
+        config.set(encrypt_mobile, 'successtime', '20240220')
 
         config.write(open(path, 'w+', encoding="utf-8"))  # 保存数据
 
